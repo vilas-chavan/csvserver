@@ -8,3 +8,15 @@ services:
       - CSVSERVER_BORDER=Orange
     volumes:
       - ./inputdata/inputFile:/csvserver/inputdata
+  prometheus:
+    image: vilaschavan80/prometheus:v2.22.0
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
+    depends_on:
+    - csvserver
+volumes:
+  prometheus-data: 
