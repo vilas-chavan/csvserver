@@ -1,0 +1,10 @@
+version: '3'
+services:
+  csvserver: 
+    image: vilaschavan80/csvserver:latest
+    ports:
+      - "9393:9300"
+    environment:
+      - CSVSERVER_BORDER=Orange
+    volumes:
+      - ./inputdata/inputFile:/csvserver/inputdata
